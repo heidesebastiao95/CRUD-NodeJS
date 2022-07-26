@@ -1,15 +1,19 @@
-const express = require('express');
-const router = express.Router();
+// import express from 'express';
 
-router.get('/product-form',(resquest,response,next)=>{
-    console.log("New Route!");
-    response.send('<form action="/product-store" method="POST"><input type="text" name="product"><button type="submit">Send</button></form>');
-    next();
+const express = require('express');
+const CategoryController = require('../Controllers/CategoryController');
+
+const Route = express.Router();
+
+Route.get('/',(request, response)=>{
+    console.log("Home page");
 });
 
-router.post('/product-store',(request,response,next)=>{
-    console.log(request.body);
-   // response.redirect
-})
+Route.get('/categories',CategoryController.index);
+Route.post('/categories',CategoryController.store);
+Route.get('/categories/:category',CategoryController.find);
+Route.put('/categories/:category', CategoryController.update);
+Route.delete('/categories/:category', CategoryController.delete)
 
-module.exports = router;
+
+module.exports = Route;

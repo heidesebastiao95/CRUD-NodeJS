@@ -1,16 +1,15 @@
+// import routes from './Routes/admin.js';
+
+const routes = require('./Routes/admin.js');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
-//my Own Files
-const RouterAdmin = require('./Routes/admin');
-const RouteUser = require('./Routes/users');
 const app = express();
 
 app.use(bodyParser.urlencoded());
 
-app.use(RouterAdmin);
-app.use(RouteUser);
-
+app.use(routes);
 
 
 app.listen(3000);
